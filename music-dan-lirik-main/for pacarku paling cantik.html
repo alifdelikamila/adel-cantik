@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Musik Kesukaanmu </title>
+    <style>
+        #lyrics-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        #lyrics {
+            position: absolute;
+            top: 20%;
+            transform: translateY(-50%);
+            width: 85%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
+            text-align: center;
+            font-style: italic;
+            font-display: swap;
+            font-size: 24px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body background="love.gif">
+    <h1 style="color: white; text-align: center;">FOR THE MOST BEAUTIFUL MY BABYGIRL</h1>
+
+    <audio id="myAudio" controls>
+        <source src="penjaga-hati.mp3" type="audio/mpeg">
+        Maaf, browser Anda tidak mendukung pemutar musik ini.
+    </audio>
+
+    <div id="lyrics-container">
+        <div id="lyrics"> Untuk adel cantik </div>
+    </div>
+
+    <script>
+        var audio = document.getElementById("myAudio");
+        var lyricsContainer = document.getElementById("lyrics-container");
+        var lyricsText = document.getElementById("lyrics");
+
+var lyrics = [
+            { time: 14, text: "tak sadar ku temukan" },
+            { time: 19, text: "temukan wanita rupawan yang sadarkan"},
+            { time: 24, text: "dia seorang tiada lain tiada bukan"},
+            { time: 29, text: "hanya dia"},
+            { time: 39, text: "Dia buatku nyaman"},
+            { time: 45, text: "Dalam hangat pelukan"},
+            { time: 49, text: "Dia perasa, Yang mengerti yang kurasa"},
+            { time: 54, text: "Hanya dia"},
+            { time: 61, text: "kan ku arungi tujuh laut samudra"},
+            { time: 67, text: "kan ku daki pegunungan himalaya"},
+            { time: 73, text: "apapun kan ku lakukan tuk dirimu sayang"},
+            { time: 78.3, text: "oh penjaga hati"},
+            { time: 94, text: "kau dan aku sempurna"},
+            { time: 98.2, text: "Semoga ada cara tuk terus bersama"},
+            { time: 103, text: "Selalu ku tunggu"},
+            { time: 106, text: "Tak mau berlalu"},
+            { time: 109.6, text: "Kau dan aku"},
+            { time: 116, text: "kan ku arungi tujuh laut samudra"},
+            { time: 122, text: "kan ku daki pegunungan himalaya"},
+            { time: 129, text: "apapun kan ku lakukan tuk dirimu sayang"},
+            { time: 134.3, text: "oh penjaga hatiku"},
+            { time: 142, text: "Interlude"},
+            { time: 166, text: "kan ku arungi tujuh laut samudra"},
+            { time: 172, text: "kan ku daki pegunungan himalaya"},
+            { time: 178, text: "apapun kan ku lakukan tuk dirimu sayang"},
+            { time: 183.3, text: "oh penjaga hatiku"},
+            { time: 190, text: "karna bersamamu semua terasa indah"},
+            { time: 197, text: "Gundah gulana hatiku t'lah hancur sirna"},
+            { time: 203, text: "janji ku tak kan ku lepas wahai kau bidadariku dari surga"},
+            { time: 211, text: "tuk selamanya"},
+            { time: 217, text: "tuk selamanya"},
+            { time: 224, text: "tuk selamanya"},
+    ]
+
+audio.addEventListener("timeupdate", function() {
+            for (var i = 0; i < lyrics.length; i++) {
+                if (audio.currentTime >= lyrics[i].time) {
+                    lyricsText.innerHTML = lyrics[i].text;
+                    var animationDuration = (lyrics[i + 1] ? lyrics[i + 1].time : audio.duration) - lyrics[i].time
+                    lyricsText.style.animation = `moveText ${animationDuration}ss linear`;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
